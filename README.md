@@ -38,11 +38,11 @@ conda create -n palm python=3.9
 conda activate palm
 
 ### install dependencies
-pip install torch torchvision torchaudio
-pip install opencv-python
-pip install tqdm
-pip install scikit-image
-pip install mediapipe
+pip install torch torchvision torchaudio<br>
+pip install opencv-python<br>
+pip install tqdm<br>
+pip install scikit-image<br>
+pip install mediapipe<br>
 
 ### compare two palm images in the test_images directory.
 python main.py
