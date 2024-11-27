@@ -38,21 +38,21 @@ conda create -n palm python=3.9
 conda activate palm
 
 ### install dependencies
-pip install torch torchvision torchaudio<br>
-pip install opencv-python<br>
-pip install tqdm<br>
-pip install scikit-image<br>
-pip install mediapipe<br>
+pip install torch torchvision torchaudio<br><br>
+pip install opencv-python<br><br>
+pip install tqdm<br><br>
+pip install scikit-image<br><br>
+pip install mediapipe<br><br>
 
 ### compare two palm images in the test_images directory.
 python main.py
 
 ## APIs and Parameters
 
-**classify_hand(mp_hands, hand_landmarks, image_width):** determine if the hand is left hand or right hand<br>
-**extract_roi(hands, mp_hands, img_path):** extract region of interest from the palm image for template matching<br>
-**extract_features(mp_hands, hands, path: str):**: extract template from the plam image specified by the path parameter.
-**compare_two_images(mp_hands, hands, image_path1, image_path2, similarity_threshold=0.8)**: compare two hand images to determine if they are the same hand or not.
+**classify_hand(mp_hands, hand_landmarks, image_width):** determine if the hand is left hand or right hand<br><br>
+**extract_roi(hands, mp_hands, img_path):** extract region of interest from the palm image for template matching<br><br>
+**extract_features(mp_hands, hands, path: str):** extract template from the plam image specified by the path parameter<br><br>
+**compare_two_images(mp_hands, hands, image_path1, image_path2, similarity_threshold=0.8)**: compare two hand images to determine if they are the same hand or not<br>
 
 ## List of our Products
 
