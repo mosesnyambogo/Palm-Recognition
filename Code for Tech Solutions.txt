@@ -1,0 +1,191 @@
+"use client";
+
+import Head from "next/head";
+import Script from "next/script";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Code2, BarChart3, Smartphone, Mail, Menu, X, Quote } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+
+export default function LandingPage() {
+  // useState must run in a client component — adding "use client" at the top fixes hook initialization errors
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // In a real app replace alert with a toast or server call
+    alert(`Thank you, ${formData.name}! We’ve received your message.`);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  const scrollToSection = (id) => {
+    // guard against running outside browser
+    if (typeof document === "undefined") return;
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "DigitalNova Solutions",
+    url: "https://digitalnova.co.ke",
+    logo: "https://digitalnova.co.ke/digitalnova-logo.png",
+    sameAs: [
+      "https://www.facebook.com/DigitalNova",
+      "https://www.linkedin.com/company/digitalnova",
+      "https://twitter.com/DigitalNova",
+    ],
+    description:
+      "DigitalNova Solutions provides expert website development, data analysis, and app development services that help businesses grow smarter and faster.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+254-700-000-000",
+      contactType: "customer service",
+      areaServed: "KE",
+      availableLanguage: ["English", "Swahili"],
+    },
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>DigitalNova Solutions | Website Development, Data Analysis & App Development</title>
+        <meta
+          name="description"
+          content="DigitalNova Solutions provides professional website development, data analysis, and mobile app development services to help your business grow smarter and faster."
+        />
+        <meta name="keywords" content="website development, data analysis, app development, digital solutions, web design, analytics" />
+        <meta name="author" content="DigitalNova Solutions" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="DigitalNova Solutions | Web, Data & App Development Experts" />
+        <meta property="og:description" content="We specialize in building modern websites, insightful data analytics, and powerful mobile applications." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://digitalnova.co.ke" />
+        <meta property="og:image" content="/digitalnova-preview.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="DigitalNova Solutions" />
+        <meta name="twitter:description" content="Your trusted partner for web, app, and data solutions." />
+        <meta name="twitter:image" content="/digitalnova-preview.jpg" />
+        <link rel="canonical" href="https://digitalnova.co.ke" />
+        {/* JSON-LD structured data (rendered client-side via dangerouslySetInnerHTML) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+
+      {/* Google Analytics Script (replace G-XXXXXXXXXX with your tracking ID) */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX');
+        `}
+      </Script>
+
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50" role="navigation" aria-label="Main Navigation">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1
+            className="text-2xl font-bold text-blue-700 cursor-pointer"
+            onClick={() => scrollToSection("home")}
+            aria-label="DigitalNova Home"
+          >
+            DigitalNova
+          </h1>
+
+          <div className="space-x-6 hidden md:flex">
+            <button onClick={() => scrollToSection("home")} className="hover:text-blue-600 font-medium" aria-label="Go to Home section">Home</button>
+            <button onClick={() => scrollToSection("services")} className="hover:text-blue-600 font-medium" aria-label="View Services">Services</button>
+            <button onClick={() => scrollToSection("testimonials")} className="hover:text-blue-600 font-medium" aria-label="View Testimonials">Testimonials</button>
+            <button onClick={() => scrollToSection("contact")} className="hover:text-blue-600 font-medium" aria-label="Contact Us">Contact</button>
+          </div>
+
+          <button
+            className="md:hidden text-gray-700"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              id="mobile-menu"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-white border-t shadow-sm overflow-hidden"
+            >
+              <div className="flex flex-col items-center py-4 space-y-4">
+                <button onClick={() => scrollToSection("home")} className="hover:text-blue-600 font-medium">Home</button>
+                <button onClick={() => scrollToSection("services")} className="hover:text-blue-600 font-medium">Services</button>
+                <button onClick={() => scrollToSection("testimonials")} className="hover:text-blue-600 font-medium">Testimonials</button>
+                <button onClick={() => scrollToSection("contact")} className="hover:text-blue-600 font-medium">Contact</button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* Hero Section with background image */}
+      <section
+        id="home"
+        className="text-center py-32 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+        style={{ backgroundImage: "url('/hero-bg.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <motion.h1
+          className="text-4xl md:text-6xl font-bold mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Building Digital Solutions That Drive Success
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl mb-8 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          We specialize in Website Development, Data Analysis, and App Development to help businesses grow smarter and faster.
+        </motion.p>
+        <Button
+          size="lg"
+          className="bg-white text-blue-700 hover:bg-gray-100 font-semibold"
+          onClick={() => scrollToSection("contact")}
+          aria-label="Get Started with DigitalNova"
+        >
+          Get Started
+        </Button>
+      </section>
+
+      {/* Services, Testimonials, and Contact sections can be re-added here if needed — trimmed for clarity */}
+
+      <footer className="py-6 text-center text-gray-500 border-t mt-10" role="contentinfo">
+        © {new Date().getFullYear()} DigitalNova Solutions. All Rights Reserved.
+      </footer>
+    </div>
+  );
+}
