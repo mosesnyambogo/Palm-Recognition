@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigitalNova Solutions | Website Development, Data Analysis & App Development</title>
+    <meta name="description" content="DigitalNova Solutions provides professional website development, data analysis, and mobile app development services to help your business grow smarter and faster." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-700">DigitalNova</h1>
+        <div class="space-x-6 hidden md:flex">
+          <a href="#home" class="hover:text-blue-600 font-medium">Home</a>
+          <a href="#services" class="hover:text-blue-600 font-medium">Services</a>
+          <a href="#contact" class="hover:text-blue-600 font-medium">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="text-center py-32 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Building Digital Solutions That Drive Success</h1>
+      <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+        We specialize in Website Development, Data Analysis, and App Development to help businesses grow smarter and faster.
+      </p>
+      <a href="#contact" class="bg-white text-blue-700 hover:bg-gray-100 font-semibold px-6 py-3 rounded-lg">Get Started</a>
+    </section>
+
+    <section id="services" class="py-20 text-center bg-white">
+      <h2 class="text-3xl font-bold mb-12 text-blue-700">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+        <div class="p-6 bg-gray-50 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Website Development</h3>
+          <p>We design responsive and modern websites tailored to your business goals.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Data Analysis Solutions</h3>
+          <p>Transform raw data into meaningful insights with our analytics expertise.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">App Development</h3>
+          <p>Build user-friendly mobile and web applications for seamless digital experiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-100 text-center">
+      <h2 class="text-3xl font-bold mb-8 text-blue-700">Get in Touch</h2>
+      <form class="max-w-md mx-auto space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded-lg" required />
+        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded-lg" required />
+        <textarea placeholder="Your Message" class="w-full p-3 border rounded-lg" rows="4" required></textarea>
+        <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800">Send Message</button>
+      </form>
+    </section>
+
+    <footer class="py-6 text-center text-gray-500 border-t mt-10">
+      © <script>document.write(new Date().getFullYear());</script> DigitalNova Solutions. All Rights Reserved.
+    </footer>
+  </body>
+</html>
